@@ -10,7 +10,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
+      {/* Added padding-top to account for fixed header */}
+      <main className="flex-grow pt-[80px]">{children}</main>
       <Footer />
     </div>
   );
