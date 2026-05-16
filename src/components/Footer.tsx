@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { themeConfig } from "../../themeConfig";
-import { Facebook, Instagram, Twitter, Pinterest } from "lucide-react";
+import { themeConfig } from "@/../themeConfig";
+import { Share2, Camera, MessageCircle, Globe } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -9,22 +8,22 @@ const Footer = () => {
         <div className="flex justify-center space-x-6 mb-4">
           {themeConfig.socialLinks.facebook && (
             <a href={themeConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-              <Facebook className="h-6 w-6 hover:text-gray-400" />
+              <Share2 className="h-6 w-6 hover:text-gray-400" />
             </a>
           )}
           {themeConfig.socialLinks.instagram && (
             <a href={themeConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-              <Instagram className="h-6 w-6 hover:text-gray-400" />
+              <Camera className="h-6 w-6 hover:text-gray-400" />
             </a>
           )}
           {themeConfig.socialLinks.twitter && (
             <a href={themeConfig.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-              <Twitter className="h-6 w-6 hover:text-gray-400" />
+              <MessageCircle className="h-6 w-6 hover:text-gray-400" />
             </a>
           )}
           {themeConfig.socialLinks.pinterest && (
             <a href={themeConfig.socialLinks.pinterest} target="_blank" rel="noopener noreferrer">
-              <Pinterest className="h-6 w-6 hover:text-gray-400" />
+              <Globe className="h-6 w-6 hover:text-gray-400" />
             </a>
           )}
         </div>

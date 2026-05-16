@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { themeConfig } from "../../themeConfig";
+import { themeConfig } from "@/../themeConfig";
 
 const HeroSection = () => {
   return (

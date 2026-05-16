@@ -66,11 +66,17 @@ const ShopPage = () => {
     filterProducts(query, {});
   };
 
-  const handleFilterChange = (filters: any) => {
+  interface FilterOptions {
+  sizes?: string[];
+  colors?: string[];
+  priceRange?: [number, number];
+}
+
+const handleFilterChange = (filters: FilterOptions) => {
     filterProducts(searchQuery, filters);
   };
 
-  const filterProducts = (query: string, filters: any) => {
+  const filterProducts = (query: string, filters: FilterOptions) => {
     let filtered = mockProducts;
 
     // Search filter
@@ -82,24 +88,27 @@ const ShopPage = () => {
 
     // Size filter
     if (filters.sizes && filters.sizes.length > 0) {
+      const sizes = filters.sizes;
       filtered = filtered.filter((product) =>
-        filters.sizes.some((size: string) => product.sizes.includes(size))
+        sizes.some((size: string) => product.sizes.includes(size))
       );
     }
 
     // Color filter
     if (filters.colors && filters.colors.length > 0) {
+      const colors = filters.colors;
       filtered = filtered.filter((product) =>
-        filters.colors.some((color: string) => product.colors.includes(color))
+        colors.some((color: string) => product.colors.includes(color))
       );
     }
 
     // Price filter
     if (filters.priceRange) {
+      const [min, max] = filters.priceRange;
       filtered = filtered.filter(
         (product) =>
-          product.price >= filters.priceRange[0] &&
-          product.price <= filters.priceRange[1]
+          product.price >= min &&
+          product.price <= max
       );
     }
 

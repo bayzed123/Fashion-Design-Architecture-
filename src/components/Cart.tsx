@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { useCartStore } from "../store/useCartStore";
-import { themeConfig } from "../../themeConfig";
+import { themeConfig } from "@/../themeConfig";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCartStore();

@@ -3,11 +3,23 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useCartStore } from "@/store/useCartStore";
-import { themeConfig } from "../../../themeConfig";
+import { themeConfig } from "@/../themeConfig";
 import { Heart, Share2 } from "lucide-react";
 
 // Mock product data
-const mockProducts: { [key: string]: any } = {
+interface ProductData {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  sizes: string[];
+  colors: string[];
+  rating: number;
+  reviews: number;
+}
+
+const mockProducts: { [key: string]: ProductData } = {
   "1": {
     id: "1",
     name: "Classic Black T-Shirt",
@@ -35,13 +47,13 @@ const mockProducts: { [key: string]: any } = {
 };
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ params }) => {
-  const { id } = params;
+const ProductDetailPage = ({ params }: ProductDetailPageProps) => {
+  const { id } = React.use(params);
   const product = mockProducts[id] || mockProducts["1"];
 
   const [selectedSize, setSelectedSize] = useState<string>("");

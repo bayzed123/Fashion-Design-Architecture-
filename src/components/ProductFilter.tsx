@@ -54,7 +54,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ onFilterChange }) => {
   };
 
   const handlePriceChange = (min: number, max: number) => {
-    const updatedFilters = { ...filters, priceRange: [min, max] };
+    const updatedFilters: FilterOptions = { ...filters, priceRange: [min, max] };
     setFilters(updatedFilters);
     onFilterChange(updatedFilters);
   };

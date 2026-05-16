@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { themeConfig } from "../../themeConfig";
+import { themeConfig } from "@/../themeConfig";
 import { ShoppingCart, Menu } from "lucide-react";
 
 const Header = () => {

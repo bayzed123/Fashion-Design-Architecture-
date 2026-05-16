@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingCart, Zap } from "lucide-react";
-import { themeConfig } from "../../themeConfig";
+import { ShoppingCart } from "lucide-react";
+import { themeConfig } from "@/../themeConfig";
 
 interface ProductCardProps {
   id: string;
