@@ -59,77 +59,60 @@ const featuredProducts = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-20 pb-20">
+    <main className="flex flex-col gap-24 pb-24 bg-white">
       <HeroSection />
 
       {/* Features Section */}
       <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-10" 
-          style={{ borderTopColor: themeConfig.colors.lightGray, borderBottomColor: themeConfig.colors.lightGray, borderTopWidth: "1px", borderBottomWidth: "1px" }}>
-          <div className="flex items-center gap-4 group">
-            <div className="p-3 rounded-full transition-all duration-300" 
-              style={{ backgroundColor: themeConfig.colors.lightGray }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.gold}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.lightGray}
-            >
-              <Truck className="h-6 w-6" style={{ color: themeConfig.colors.primary }} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-y border-black/5">
+          <div className="flex flex-col items-center text-center gap-4 group">
+            <div className="p-5 rounded-full transition-all duration-500 bg-[#F8F8F8] group-hover:bg-[#D4AF37]">
+              <Truck className="h-7 w-7 transition-colors duration-500 text-[#1A1A1A] group-hover:text-white" />
             </div>
             <div>
-              <h4 className="font-bold uppercase tracking-wider" style={{ color: themeConfig.colors.primary }}>
+              <h4 className="font-bold uppercase tracking-[0.15em] text-sm mb-2" style={{ color: themeConfig.colors.primary }}>
                 Free Shipping
               </h4>
-              <p className="text-sm" style={{ color: themeConfig.colors.secondary }}>
+              <p className="text-xs uppercase tracking-widest opacity-60">
                 On orders over ৳5000
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 group">
-            <div className="p-3 rounded-full transition-all duration-300" 
-              style={{ backgroundColor: themeConfig.colors.lightGray }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.gold}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.lightGray}
-            >
-              <RotateCcw className="h-6 w-6" style={{ color: themeConfig.colors.primary }} />
+          <div className="flex flex-col items-center text-center gap-4 group">
+            <div className="p-5 rounded-full transition-all duration-500 bg-[#F8F8F8] group-hover:bg-[#D4AF37]">
+              <RotateCcw className="h-7 w-7 transition-colors duration-500 text-[#1A1A1A] group-hover:text-white" />
             </div>
             <div>
-              <h4 className="font-bold uppercase tracking-wider" style={{ color: themeConfig.colors.primary }}>
+              <h4 className="font-bold uppercase tracking-[0.15em] text-sm mb-2" style={{ color: themeConfig.colors.primary }}>
                 Easy Returns
               </h4>
-              <p className="text-sm" style={{ color: themeConfig.colors.secondary }}>
+              <p className="text-xs uppercase tracking-widest opacity-60">
                 30-day return policy
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 group">
-            <div className="p-3 rounded-full transition-all duration-300" 
-              style={{ backgroundColor: themeConfig.colors.lightGray }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.gold}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.lightGray}
-            >
-              <ShieldCheck className="h-6 w-6" style={{ color: themeConfig.colors.primary }} />
+          <div className="flex flex-col items-center text-center gap-4 group">
+            <div className="p-5 rounded-full transition-all duration-500 bg-[#F8F8F8] group-hover:bg-[#D4AF37]">
+              <ShieldCheck className="h-7 w-7 transition-colors duration-500 text-[#1A1A1A] group-hover:text-white" />
             </div>
             <div>
-              <h4 className="font-bold uppercase tracking-wider" style={{ color: themeConfig.colors.primary }}>
+              <h4 className="font-bold uppercase tracking-[0.15em] text-sm mb-2" style={{ color: themeConfig.colors.primary }}>
                 Secure Payment
               </h4>
-              <p className="text-sm" style={{ color: themeConfig.colors.secondary }}>
+              <p className="text-xs uppercase tracking-widest opacity-60">
                 100% secure checkout
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 group">
-            <div className="p-3 rounded-full transition-all duration-300" 
-              style={{ backgroundColor: themeConfig.colors.lightGray }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.gold}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.lightGray}
-            >
-              <Headphones className="h-6 w-6" style={{ color: themeConfig.colors.primary }} />
+          <div className="flex flex-col items-center text-center gap-4 group">
+            <div className="p-5 rounded-full transition-all duration-500 bg-[#F8F8F8] group-hover:bg-[#D4AF37]">
+              <Headphones className="h-7 w-7 transition-colors duration-500 text-[#1A1A1A] group-hover:text-white" />
             </div>
             <div>
-              <h4 className="font-bold uppercase tracking-wider" style={{ color: themeConfig.colors.primary }}>
+              <h4 className="font-bold uppercase tracking-[0.15em] text-sm mb-2" style={{ color: themeConfig.colors.primary }}>
                 24/7 Support
               </h4>
-              <p className="text-sm" style={{ color: themeConfig.colors.secondary }}>
+              <p className="text-xs uppercase tracking-widest opacity-60">
                 Dedicated support team
               </p>
             </div>
@@ -139,22 +122,23 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="container mx-auto px-4">
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-3 uppercase tracking-wider" 
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6">
+          <div className="text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-[0.1em]" 
               style={{ fontFamily: themeConfig.fonts.heading, color: themeConfig.colors.primary }}>
               Featured Collection
             </h2>
-            <p className="text-lg" style={{ color: themeConfig.colors.secondary }}>
+            <div className="w-20 h-1 bg-[#D4AF37] mx-auto md:mx-0 mb-4"></div>
+            <p className="text-lg italic opacity-70" style={{ fontFamily: themeConfig.fonts.heading }}>
               Discover our curated selection of haute couture pieces
             </p>
           </div>
-          <Link href="/shop" className="flex items-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group" 
+          <Link href="/shop" className="flex items-center gap-3 font-bold uppercase tracking-[0.2em] text-sm transition-all duration-300 group hover:text-[#AA8A2E]" 
             style={{ color: themeConfig.colors.gold }}>
-            View All <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            View All <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
@@ -163,20 +147,20 @@ export default function Home() {
 
       {/* Promo Banner */}
       <section className="container mx-auto px-4">
-        <div className="relative h-[450px] rounded-2xl overflow-hidden text-white flex items-center px-10 md:px-20" 
+        <div className="relative h-[500px] rounded-3xl overflow-hidden text-white flex items-center px-8 md:px-24" 
           style={{ backgroundColor: themeConfig.colors.primary }}>
           <div className="relative z-10 max-w-2xl">
-            <span className="text-sm font-bold uppercase tracking-widest mb-4 block" style={{ color: themeConfig.colors.gold }}>
+            <span className="text-xs font-bold uppercase tracking-[0.4em] mb-6 block" style={{ color: themeConfig.colors.gold }}>
               Exclusive Offer
             </span>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ fontFamily: themeConfig.fonts.heading }}>
-              Seasonal Collection
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight uppercase tracking-tighter" style={{ fontFamily: themeConfig.fonts.heading }}>
+              Seasonal <br/> Collection
             </h2>
-            <p className="text-lg mb-8 opacity-90 leading-relaxed">
+            <p className="text-lg mb-10 opacity-80 leading-relaxed max-w-lg">
               Experience the pinnacle of luxury fashion. Each piece is meticulously crafted with premium materials and timeless design.
             </p>
             <Link href="/shop" 
-              className="inline-block px-10 py-4 rounded-full font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              className="inline-block px-12 py-5 rounded-full font-bold uppercase tracking-[0.2em] text-sm transition-all duration-500 hover:bg-white hover:text-black"
               style={{ 
                 backgroundColor: themeConfig.colors.gold,
                 color: themeConfig.colors.primary,
@@ -185,41 +169,38 @@ export default function Home() {
               Explore Now
             </Link>
           </div>
-          <div className="absolute inset-0 opacity-10 z-0" style={{ backgroundImage: "url('/lookbook-1.jpg')", backgroundSize: "cover", backgroundPosition: "right" }}></div>
+          <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: "url('/lookbook-1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-0"></div>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="py-20" style={{ backgroundColor: themeConfig.colors.lightGray }}>
+      <section className="py-24 bg-[#F8F8F8]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wider" 
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-[0.15em]" 
             style={{ fontFamily: themeConfig.fonts.heading, color: themeConfig.colors.primary }}>
             Join Our Exclusive Circle
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: themeConfig.colors.secondary }}>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-8"></div>
+          <p className="text-lg mb-12 max-w-2xl mx-auto opacity-70 leading-relaxed">
             Subscribe to receive early access to new collections, exclusive offers, and insider fashion tips.
           </p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
             <input 
               type="email" 
-              placeholder="Enter your email" 
-              className="flex-1 px-6 py-3 rounded-full border-2 focus:outline-none transition-all duration-300"
+              placeholder="ENTER YOUR EMAIL" 
+              className="flex-1 px-8 py-4 rounded-full border border-black/10 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 text-sm tracking-widest"
               style={{ 
-                borderColor: themeConfig.colors.gold,
                 backgroundColor: "white"
               }}
-              onFocus={(e) => e.currentTarget.style.borderColor = themeConfig.colors.darkGold}
-              onBlur={(e) => e.currentTarget.style.borderColor = themeConfig.colors.gold}
               required
             />
             <button 
-              className="px-8 py-3 rounded-full font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              className="px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-sm transition-all duration-500 hover:scale-105"
               style={{ 
                 backgroundColor: themeConfig.colors.primary,
                 color: "white"
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.gold}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = themeConfig.colors.primary}
             >
               Subscribe
             </button>

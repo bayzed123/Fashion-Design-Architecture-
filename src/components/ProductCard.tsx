@@ -16,70 +16,61 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, image, sizes, colors }) => {
   return (
-    <div className="group bg-white overflow-hidden transition-all duration-300 hover:shadow-2xl">
+    <div className="group bg-white overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-black/5">
       <Link href={`/product/${id}`}>
-        <div className="relative h-80 w-full overflow-hidden" style={{ backgroundColor: themeConfig.colors.lightGray }}>
+        <div className="relative h-[450px] w-full overflow-hidden bg-[#F8F8F8]">
           <Image
             src={image}
             alt={name}
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            className="group-hover:scale-105 transition-transform duration-500"
+            fill
+            className="group-hover:scale-110 transition-transform duration-1000 object-cover"
           />
-          <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white" 
+          <div className="absolute top-6 right-6 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white" 
             style={{ backgroundColor: themeConfig.colors.gold }}>
-            New
+            New Arrival
           </div>
-          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+            <span className="px-8 py-3 bg-white text-black text-[10px] font-bold uppercase tracking-[0.3em] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              Quick View
+            </span>
+          </div>
         </div>
       </Link>
-      <div className="p-6">
-        <h3 className="text-lg font-semibold mb-2 uppercase tracking-wider" 
+      <div className="p-8 text-center">
+        <p className="text-[10px] mb-3 uppercase tracking-[0.3em] opacity-50" style={{ color: themeConfig.colors.primary }}>
+          {colors.length} colors · {sizes.length} sizes
+        </p>
+        <h3 className="text-xl font-bold mb-4 uppercase tracking-[0.1em]" 
           style={{ 
             fontFamily: themeConfig.fonts.heading,
             color: themeConfig.colors.primary
           }}>
           {name}
         </h3>
-        <p className="text-sm mb-4 uppercase tracking-widest" style={{ color: themeConfig.colors.secondary }}>
-          {colors.length} colors · {sizes.length} sizes
-        </p>
-        <div className="flex justify-between items-center mb-6">
-          <span className="text-2xl font-bold" style={{ color: themeConfig.colors.gold }}>
+        <div className="flex flex-col items-center gap-6">
+          <span className="text-2xl font-light tracking-widest" style={{ color: themeConfig.colors.gold, fontFamily: themeConfig.fonts.heading }}>
             ৳{price.toLocaleString()}
           </span>
-          <button 
-            className="p-3 rounded-full transition-all duration-300 hover:scale-110" 
-            style={{ 
-              backgroundColor: themeConfig.colors.primary,
-              color: "white"
-            }}
-            title="Add to Cart"
-          >
-            <ShoppingCart className="h-5 w-5" />
-          </button>
+          
+          <div className="flex w-full gap-2">
+            <Link href={`/product/${id}`} className="flex-1">
+              <button 
+                className="w-full py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 border border-black/10 hover:bg-black hover:text-white"
+                style={{ 
+                  color: themeConfig.colors.primary
+                }}
+              >
+                Details
+              </button>
+            </Link>
+            <button 
+              className="p-4 transition-all duration-500 bg-black text-white hover:bg-[#D4AF37]" 
+              title="Add to Cart"
+            >
+              <ShoppingCart className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-        <Link href={`/product/${id}`}>
-          <button 
-            className="w-full py-3 rounded-full font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105"
-            style={{ 
-              backgroundColor: themeConfig.colors.primary,
-              color: "white",
-              border: `2px solid ${themeConfig.colors.primary}`
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = themeConfig.colors.gold;
-              e.currentTarget.style.color = themeConfig.colors.primary;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = themeConfig.colors.primary;
-              e.currentTarget.style.color = "white";
-            }}
-          >
-            View Details
-          </button>
-        </Link>
       </div>
     </div>
   );

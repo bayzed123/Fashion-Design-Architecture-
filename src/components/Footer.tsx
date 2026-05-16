@@ -56,9 +56,18 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer style={{ backgroundColor: themeConfig.colors.primary }} className="text-white py-16 border-t border-white/10">
       <div className="container mx-auto px-4 text-center">
-        <div className="flex flex-wrap justify-center gap-6 mb-8">
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold uppercase tracking-[0.2em] mb-2" style={{ fontFamily: themeConfig.fonts.heading, color: themeConfig.colors.gold }}>
+            {themeConfig.brandName}
+          </h2>
+          <p className="text-sm uppercase tracking-widest opacity-60">
+            {themeConfig.tagline}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-8 mb-12">
           {socialIcons.map((social) => {
             const shouldRender = social.isEmail
               ? themeConfig.socialLinks.email
@@ -87,9 +96,9 @@ const Footer = () => {
                 target={social.isEmail ? undefined : "_blank"}
                 rel={social.isEmail ? undefined : "noopener noreferrer"}
                 title={social.name}
-                className={`transition-opacity ${social.hoverColor}`}
+                className="transition-all duration-300 hover:scale-110 opacity-70 hover:opacity-100"
               >
-                <div className="relative w-6 h-6">
+                <div className="relative w-6 h-6 filter brightness-0 invert">
                   <Image
                     src={social.icon}
                     alt={social.name}
@@ -102,40 +111,39 @@ const Footer = () => {
           })}
         </div>
 
-        <div className="text-sm text-gray-400 space-y-3">
-          <p className="font-medium">
-            &copy; {new Date().getFullYear()} {themeConfig.brandName}. All
-            rights Reserved.
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
+        <div className="max-w-4xl mx-auto border-t border-white/5 pt-10">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-xs uppercase tracking-widest mb-6">
             <a
               href="https://connectbayezid-8dcdz46v.manus.space"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[#D4AF37] transition-colors duration-300"
             >
               Connect with Bayezid
             </a>
-            <span className="hidden md:inline text-gray-600">|</span>
+            <span className="hidden md:inline opacity-20">|</span>
             <a
               href="http://www.connectwithbayezid.it.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[#D4AF37] transition-colors duration-300"
             >
               cwb agency
             </a>
-            <span className="hidden md:inline text-gray-600">|</span>
-            <span className="text-gray-500">Developed By</span>
+            <span className="hidden md:inline opacity-20">|</span>
             <a
               href="http://www.sayadbayezid.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors font-semibold"
+              className="hover:text-[#D4AF37] transition-colors duration-300 font-bold"
             >
               Sayad Md bayezid hosan
             </a>
           </div>
+          
+          <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">
+            &copy; {new Date().getFullYear()} {themeConfig.brandName}. All rights Reserved.
+          </p>
         </div>
       </div>
     </footer>
