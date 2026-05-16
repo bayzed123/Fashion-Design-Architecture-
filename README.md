@@ -1,5 +1,5 @@
 # White-label Master Fashion Website Template
-
+OPEN Source For Free Everyone 
 ## 🌟 Project Overview
 
 This project is a **White-label Master Fashion Website Template**, meticulously crafted to serve as a highly scalable and easily rebrandable boilerplate for high-end fashion brands. Developed with a focus on a clean, premium, and minimalistic UI, this template allows for rapid deployment and customization for various clients. The core idea is to enable a complete brand overhaul by simply modifying a single configuration file.
