@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
+import { themeConfig } from "@/../themeConfig";
 
 interface LookbookImage {
   id: string;
@@ -19,11 +20,11 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {images.map((image) => (
           <div
             key={image.id}
-            className="relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer group"
+            className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
             onClick={() => setSelectedImage(image)}
           >
             <Image
@@ -32,13 +33,17 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
               width={400}
               height={500}
               objectFit="cover"
-              className="w-full h-64 group-hover:scale-110 transition-transform duration-300"
+              className="w-full h-80 group-hover:scale-110 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center">
-              <ZoomIn className="h-8 w-8 text-white" />
+            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300 flex items-center justify-center">
+              <ZoomIn className="h-10 w-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-              <p className="text-white font-semibold">{image.title}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300" 
+              style={{ backgroundImage: `linear-gradient(to top, ${themeConfig.colors.primary}, transparent)` }}>
+              <p className="text-white font-semibold uppercase tracking-wider text-lg" 
+                style={{ fontFamily: themeConfig.fonts.heading }}>
+                {image.title}
+              </p>
             </div>
           </div>
         ))}
@@ -47,18 +52,18 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
       {/* Modal for zoomed view */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
           onClick={() => setSelectedImage(null)}
         >
           <div
-            className="relative max-w-2xl w-full"
+            className="relative max-w-4xl w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-10 right-0 text-white hover:text-gray-300"
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-300 z-10"
             >
-              <X className="h-8 w-8" />
+              <X className="h-10 w-10" />
             </button>
             <Image
               src={selectedImage.url}
@@ -66,9 +71,12 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
               width={800}
               height={1000}
               objectFit="contain"
-              className="w-full"
+              className="w-full rounded-lg"
             />
-            <p className="text-white text-center mt-4">{selectedImage.title}</p>
+            <p className="text-white text-center mt-6 text-xl font-semibold uppercase tracking-wider" 
+              style={{ fontFamily: themeConfig.fonts.heading }}>
+              {selectedImage.title}
+            </p>
           </div>
         </div>
       )}

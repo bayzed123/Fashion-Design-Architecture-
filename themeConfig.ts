@@ -1,12 +1,16 @@
 export const themeConfig = {
-  brandName: "Fashion Template",
+  brandName: "VELLUTO HAUTE COUTURE",
+  tagline: "Luxury Fashion Collection",
   logo: "/logo.svg",
   colors: {
-    primary: "#000000",
-    secondary: "#6B7280",
-    accent: "#F87171",
+    primary: "#1a1a1a",
+    secondary: "#8B7355",
+    accent: "#D4AF37",
     background: "#FFFFFF",
-    text: "#1F2937",
+    text: "#2D2D2D",
+    lightGray: "#F5F5F5",
+    gold: "#D4AF37",
+    darkGold: "#B8860B",
   },
   fonts: {
     heading: "'Playfair Display', serif",

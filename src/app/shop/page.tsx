@@ -4,89 +4,90 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import ProductFilter from "@/components/ProductFilter";
 import ProductSearch from "@/components/ProductSearch";
+import { themeConfig } from "@/../themeConfig";
 
 // Expanded Mock product data for a full demo
 const mockProducts = [
   {
     id: "1",
-    name: "Classic Black T-Shirt",
-    price: 1500,
+    name: "Evening Gown Elegance",
+    price: 45000,
     image: "/product-1.jpg",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black", "White"],
-    category: "Essentials"
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Burgundy", "Black", "Navy"],
+    category: "Dresses"
   },
   {
     id: "2",
-    name: "Elegant White Shirt",
-    price: 2500,
+    name: "Urban Chic Collection",
+    price: 28000,
     image: "/product-2.jpg",
-    sizes: ["XS", "S", "M", "L"],
-    colors: ["White", "Blue"],
-    category: "Formal"
-  },
-  {
-    id: "3",
-    name: "Premium Denim Jeans",
-    price: 3500,
-    image: "/product-3.jpg",
-    sizes: ["28", "30", "32", "34"],
-    colors: ["Blue", "Black"],
-    category: "Bottoms"
-  },
-  {
-    id: "4",
-    name: "Casual Polo Shirt",
-    price: 2000,
-    image: "/product-4.jpg",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Red", "Blue", "Green"],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Charcoal", "White"],
     category: "Casual"
   },
   {
+    id: "3",
+    name: "Luxury Accessories",
+    price: 35000,
+    image: "/product-3.jpg",
+    sizes: ["One Size"],
+    colors: ["Gold", "Silver", "Bronze"],
+    category: "Accessories"
+  },
+  {
+    id: "4",
+    name: "Tailored Suit",
+    price: 52000,
+    image: "/product-4.jpg",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["Navy", "Black", "Charcoal"],
+    category: "Formal"
+  },
+  {
     id: "5",
-    name: "Summer Floral Dress",
-    price: 3200,
+    name: "Avant-Garde Statement",
+    price: 48000,
     image: "/product-5.jpg",
     sizes: ["XS", "S", "M", "L"],
-    colors: ["Yellow", "Red"],
+    colors: ["Cream", "White", "Ivory"],
     category: "Dresses"
   },
   {
     id: "6",
-    name: "Formal Navy Blazer",
-    price: 5500,
+    name: "Bohemian Luxury",
+    price: 42000,
     image: "/product-6.jpg",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Blue", "Black"],
-    category: "Formal"
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Gold", "Terracotta", "Rust"],
+    category: "Dresses"
   },
   {
     id: "7",
-    name: "Oversized Beige Hoodie",
-    price: 2800,
+    name: "Premium Silk Blouse",
+    price: 32000,
     image: "/product-1.jpg",
-    sizes: ["M", "L", "XL"],
-    colors: ["Beige", "Gray"],
-    category: "Essentials"
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Ivory", "Blush", "Black"],
+    category: "Formal"
   },
   {
     id: "8",
-    name: "Slim Fit Chinos",
-    price: 2200,
+    name: "Designer Trousers",
+    price: 38000,
     image: "/product-2.jpg",
-    sizes: ["30", "32", "34"],
-    colors: ["Khaki", "Black", "Navy"],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Navy", "Camel"],
     category: "Bottoms"
   },
   {
     id: "9",
-    name: "Silk Evening Gown",
-    price: 8500,
+    name: "Couture Jacket",
+    price: 55000,
     image: "/product-3.jpg",
-    sizes: ["S", "M", "L"],
-    colors: ["Emerald", "Black"],
-    category: "Dresses"
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Black", "Charcoal", "Cream"],
+    category: "Formal"
   }
 ];
 
@@ -139,11 +140,19 @@ const ShopPage = () => {
   }, [searchQuery, activeFilters]);
 
   return (
-    <div className="py-8 max-w-7xl mx-auto px-4">
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Shop Our Collection</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Explore our curated selection of premium fashion pieces designed for style and comfort.
+    <div className="pt-24 pb-20 max-w-7xl mx-auto px-4">
+      <div className="mb-16 text-center">
+        <p className="text-sm md:text-base tracking-widest uppercase mb-4" 
+          style={{ color: themeConfig.colors.gold, fontFamily: themeConfig.fonts.body }}>
+          Complete Collection
+        </p>
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 uppercase tracking-wider" 
+          style={{ fontFamily: themeConfig.fonts.heading, color: themeConfig.colors.primary }}>
+          Shop Our Collection
+        </h1>
+        <div className="w-20 h-1 mx-auto mb-6" style={{ backgroundColor: themeConfig.colors.gold }}></div>
+        <p className="text-lg max-w-2xl mx-auto" style={{ color: themeConfig.colors.secondary }}>
+          Explore our curated selection of premium fashion pieces designed for elegance and sophistication.
         </p>
       </div>
 
@@ -157,11 +166,17 @@ const ShopPage = () => {
         </aside>
         
         <main className="flex-1">
-          <div className="flex justify-between items-center mb-6">
-            <p className="text-gray-600">Showing {filteredProducts.length} products</p>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Sort by:</span>
-              <select className="border-none bg-transparent font-medium focus:ring-0 cursor-pointer">
+          <div className="flex justify-between items-center mb-8 pb-6" 
+            style={{ borderBottomColor: themeConfig.colors.lightGray, borderBottomWidth: "1px" }}>
+            <p className="font-semibold uppercase tracking-wider" style={{ color: themeConfig.colors.primary }}>
+              {filteredProducts.length} {filteredProducts.length === 1 ? "Product" : "Products"}
+            </p>
+            <div className="flex items-center gap-3">
+              <span className="text-sm uppercase tracking-wider" style={{ color: themeConfig.colors.secondary }}>Sort:</span>
+              <select 
+                className="border-none bg-transparent font-medium focus:ring-0 cursor-pointer uppercase tracking-wider"
+                style={{ color: themeConfig.colors.primary }}
+              >
                 <option>Featured</option>
                 <option>Price: Low to High</option>
                 <option>Price: High to Low</option>
@@ -171,11 +186,16 @@ const ShopPage = () => {
           </div>
 
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-20 bg-gray-50 rounded-xl">
-              <p className="text-xl text-gray-500 mb-4">No products found matching your criteria.</p>
+            <div className="text-center py-20 rounded-xl" style={{ backgroundColor: themeConfig.colors.lightGray }}>
+              <p className="text-xl mb-4 uppercase tracking-wider" style={{ color: themeConfig.colors.secondary }}>
+                No products found matching your criteria.
+              </p>
               <button 
                 onClick={() => {setSearchQuery(""); setActiveFilters({});}}
-                className="text-black underline font-medium"
+                className="uppercase tracking-wider font-semibold transition-all duration-300"
+                style={{ color: themeConfig.colors.gold }}
+                onMouseEnter={(e) => e.currentTarget.style.color = themeConfig.colors.darkGold}
+                onMouseLeave={(e) => e.currentTarget.style.color = themeConfig.colors.gold}
               >
                 Clear all filters
               </button>
