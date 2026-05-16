@@ -14,18 +14,18 @@ const HeroSection = () => {
         className="z-0 object-cover"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10"></div>
       <div className="relative z-20 text-center px-4 max-w-4xl">
         <div className="mb-8">
-          <p className="text-xs md:text-sm tracking-[0.5em] uppercase mb-6 opacity-90" style={{ color: themeConfig.colors.gold, fontFamily: themeConfig.fonts.body }}>
+          <p className="text-xs md:text-sm tracking-[0.5em] uppercase mb-6 opacity-90 text-white" style={{ fontFamily: themeConfig.fonts.body }}>
             {themeConfig.tagline}
           </p>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tighter uppercase" style={{ fontFamily: themeConfig.fonts.heading }}>
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tighter uppercase text-white" style={{ fontFamily: themeConfig.fonts.heading }}>
             {themeConfig.brandName}
           </h1>
           <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-10"></div>
         </div>
-        <p className="text-lg md:text-xl mb-12 leading-relaxed opacity-80 max-w-2xl mx-auto italic" style={{ fontFamily: themeConfig.fonts.heading }}>
+        <p className="text-lg md:text-xl mb-12 leading-relaxed opacity-80 max-w-2xl mx-auto italic text-white" style={{ fontFamily: themeConfig.fonts.heading }}>
           Experience the pinnacle of haute couture. Each piece tells a story of elegance, craftsmanship, and timeless beauty.
         </p>
         <Link href="/shop" className="px-12 py-5 text-sm font-bold transition-all duration-500 uppercase tracking-[0.3em] rounded-full hover:bg-white hover:text-black" 
