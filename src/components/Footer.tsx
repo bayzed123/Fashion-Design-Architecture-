@@ -1,12 +1,13 @@
 import { themeConfig } from "@/../themeConfig";
 import { 
-  Linkedin, 
-  Youtube, 
-  Instagram, 
-  Facebook, 
+  Share2, 
+  Video, 
+  Camera, 
+  MessageCircle, 
   Mail, 
   ExternalLink,
-  Palette
+  Palette,
+  User
 } from "lucide-react";
 
 const Footer = () => {
@@ -16,17 +17,17 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center gap-6 mb-8">
           {themeConfig.socialLinks.linkedin && (
             <a href={themeConfig.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn">
-              <Linkedin className="h-6 w-6 hover:text-blue-400 transition-colors" />
+              <Share2 className="h-6 w-6 hover:text-blue-400 transition-colors" />
             </a>
           )}
           {themeConfig.socialLinks.youtube && (
             <a href={themeConfig.socialLinks.youtube} target="_blank" rel="noopener noreferrer" title="YouTube">
-              <Youtube className="h-6 w-6 hover:text-red-500 transition-colors" />
+              <Video className="h-6 w-6 hover:text-red-500 transition-colors" />
             </a>
           )}
           {themeConfig.socialLinks.instagram && (
             <a href={themeConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" title="Instagram">
-              <Instagram className="h-6 w-6 hover:text-pink-500 transition-colors" />
+              <Camera className="h-6 w-6 hover:text-pink-500 transition-colors" />
             </a>
           )}
           {themeConfig.socialLinks.behance && (
@@ -36,12 +37,12 @@ const Footer = () => {
           )}
           {themeConfig.socialLinks.facebook && (
             <a href={themeConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" title="Facebook">
-              <Facebook className="h-6 w-6 hover:text-blue-600 transition-colors" />
+              <MessageCircle className="h-6 w-6 hover:text-blue-600 transition-colors" />
             </a>
           )}
           {themeConfig.socialLinks.facebookSecondary && (
             <a href={themeConfig.socialLinks.facebookSecondary} target="_blank" rel="noopener noreferrer" title="Facebook Personal">
-              <Facebook className="h-6 w-6 hover:text-blue-600 transition-colors opacity-70" />
+              <User className="h-6 w-6 hover:text-blue-600 transition-colors opacity-70" />
             </a>
           )}
           {themeConfig.socialLinks.beacons && (
