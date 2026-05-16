@@ -20,6 +20,17 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   const navLinks = [
     { name: "Shop", href: "/shop" },
     { name: "Lookbook", href: "/lookbook" },
@@ -85,10 +96,18 @@ const Header = () => {
 
       {/* Mobile Navigation Overlay */}
       <div 
-        className={`md:hidden fixed inset-0 top-[70px] bg-white z-40 transition-transform duration-500 ease-in-out ${
+        className={`md:hidden fixed inset-0 top-0 bg-white z-40 transition-transform duration-500 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        <div className="flex justify-end p-6">
+          <button 
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close Menu"
+          >
+            <X className="h-7 w-7 text-gray-900" />
+          </button>
+        </div>
         <nav className="h-full flex flex-col p-8">
           <ul className="flex flex-col space-y-8">
             {navLinks.map((link) => (
@@ -97,7 +116,16 @@ const Header = () => {
                   href={link.href} 
                   className="text-3xl font-black tracking-tighter text-gray-900"
                   style={{ fontFamily: themeConfig.fonts.heading }}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    // If it's an anchor link on the same page, we might need to handle scrolling
+                    if (link.href.startsWith("#")) {
+                      const element = document.getElementById(link.href.substring(1));
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }
+                  }}
                 >
                   {link.name.toUpperCase()}
                 </Link>
