@@ -14,6 +14,7 @@ const Cart = () => {
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const handleCheckout = () => {
+    // Check if cart is empty
     if (cart.length === 0) {
       alert("Your cart is empty. Please add items before checking out.");
       return;
@@ -22,18 +23,21 @@ const Cart = () => {
     // Generate PDF Invoice
     generateInvoice(cart, totalPrice);
 
-    // Generate WhatsApp message
-    let whatsappMessage = `Hello, I'd like to place an order.\n\nOrder Details:\n`;
-    cart.forEach(item => {
-      whatsappMessage += `- ${item.name} (Size: ${item.size}, Color: ${item.color}) x ${item.quantity} = ৳${(item.price * item.quantity).toFixed(2)}\n`;
+    // Generate WhatsApp message with improved format
+    let whatsappMessage = `Hello ${themeConfig.brandName}, I want to confirm my order:%0A`;
+    
+    cart.forEach((item) => {
+      whatsappMessage += `${item.name} - Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}%0A`;
     });
-    whatsappMessage += `\nGrand Total: ৳${totalPrice.toFixed(2)}\n\n`;
-    whatsappMessage += `Please confirm my order.`;
+    
+    whatsappMessage += `%0AGrand Total: ৳${totalPrice.toFixed(2)}`;
 
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappLink = `https://wa.me/${themeConfig.contact.whatsappNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappLink, '_blank');
+    // Get WhatsApp number from themeConfig or use placeholder
+    const whatsappNumber = themeConfig.contact?.whatsappNumber || "8801700000000";
+    
+    // Open WhatsApp with the formatted message
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    window.open(whatsappLink, "_blank");
   };
 
   return (
@@ -106,7 +110,7 @@ const Cart = () => {
             </p>
             <button
               onClick={handleCheckout}
-              className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition active:scale-95"
+              className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition active:scale-95 cursor-pointer"
               style={{ backgroundColor: themeConfig.colors.primary }}
             >
               Proceed to Checkout
