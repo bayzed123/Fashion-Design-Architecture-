@@ -1,3 +1,5 @@
+"use client";
+
 import HeroSection from "../components/HeroSection";
 import ProductCard from "../components/ProductCard";
 import Link from "next/link";
