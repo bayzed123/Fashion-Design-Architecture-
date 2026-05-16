@@ -106,7 +106,7 @@ const Cart = () => {
             </p>
             <button
               onClick={handleCheckout}
-              className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition"
+              className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition active:scale-95"
               style={{ backgroundColor: themeConfig.colors.primary }}
             >
               Proceed to Checkout

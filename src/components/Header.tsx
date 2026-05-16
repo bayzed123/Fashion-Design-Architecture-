@@ -110,13 +110,13 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-black transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 bg-black transition-all duration-500 lg:hidden z-40 ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col h-full p-8">
+        <div className="flex flex-col h-full p-8 relative z-50">
           <div className="flex justify-end mb-12">
-            <button onClick={() => setIsMenuOpen(false)} className="text-white p-2">
+            <button onClick={() => setIsMenuOpen(false)} className="text-white p-2 hover:text-[#D4AF37] transition-colors">
               <X className="h-8 w-8" />
             </button>
           </div>

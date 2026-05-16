@@ -14,7 +14,10 @@ const HeroSection = () => {
         className="z-0 object-cover"
         priority
       />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/50 to-black/30 z-10"></div>
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40 z-10" style={{
+        backgroundImage: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)'
+      }}></div>
       <div className="relative z-20 text-center px-4 max-w-4xl">
         <div className="mb-8">
           <p className="text-xs md:text-sm tracking-[0.5em] uppercase mb-6 opacity-90 text-white" style={{ fontFamily: themeConfig.fonts.body }}>
