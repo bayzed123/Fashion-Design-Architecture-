@@ -1,41 +1,71 @@
 import { themeConfig } from "@/../themeConfig";
-import { Share2, Camera, MessageCircle, Globe } from "lucide-react";
+import { 
+  Linkedin, 
+  Youtube, 
+  Instagram, 
+  Facebook, 
+  Mail, 
+  ExternalLink,
+  Palette
+} from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-800 text-white py-12">
       <div className="container mx-auto px-4 text-center">
-        <div className="flex justify-center space-x-6 mb-4">
-          {themeConfig.socialLinks.facebook && (
-            <a href={themeConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-              <Share2 className="h-6 w-6 hover:text-gray-400" />
+        <div className="flex flex-wrap justify-center gap-6 mb-8">
+          {themeConfig.socialLinks.linkedin && (
+            <a href={themeConfig.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <Linkedin className="h-6 w-6 hover:text-blue-400 transition-colors" />
+            </a>
+          )}
+          {themeConfig.socialLinks.youtube && (
+            <a href={themeConfig.socialLinks.youtube} target="_blank" rel="noopener noreferrer" title="YouTube">
+              <Youtube className="h-6 w-6 hover:text-red-500 transition-colors" />
             </a>
           )}
           {themeConfig.socialLinks.instagram && (
-            <a href={themeConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-              <Camera className="h-6 w-6 hover:text-gray-400" />
+            <a href={themeConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" title="Instagram">
+              <Instagram className="h-6 w-6 hover:text-pink-500 transition-colors" />
             </a>
           )}
-          {themeConfig.socialLinks.twitter && (
-            <a href={themeConfig.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="h-6 w-6 hover:text-gray-400" />
+          {themeConfig.socialLinks.behance && (
+            <a href={themeConfig.socialLinks.behance} target="_blank" rel="noopener noreferrer" title="Behance">
+              <Palette className="h-6 w-6 hover:text-blue-500 transition-colors" />
             </a>
           )}
-          {themeConfig.socialLinks.pinterest && (
-            <a href={themeConfig.socialLinks.pinterest} target="_blank" rel="noopener noreferrer">
-              <Globe className="h-6 w-6 hover:text-gray-400" />
+          {themeConfig.socialLinks.facebook && (
+            <a href={themeConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" title="Facebook">
+              <Facebook className="h-6 w-6 hover:text-blue-600 transition-colors" />
+            </a>
+          )}
+          {themeConfig.socialLinks.facebookSecondary && (
+            <a href={themeConfig.socialLinks.facebookSecondary} target="_blank" rel="noopener noreferrer" title="Facebook Personal">
+              <Facebook className="h-6 w-6 hover:text-blue-600 transition-colors opacity-70" />
+            </a>
+          )}
+          {themeConfig.socialLinks.beacons && (
+            <a href={themeConfig.socialLinks.beacons} target="_blank" rel="noopener noreferrer" title="All Links">
+              <ExternalLink className="h-6 w-6 hover:text-green-400 transition-colors" />
+            </a>
+          )}
+          {themeConfig.socialLinks.email && (
+            <a href={themeConfig.socialLinks.email} title="Email">
+              <Mail className="h-6 w-6 hover:text-yellow-400 transition-colors" />
             </a>
           )}
         </div>
-        <div className="text-sm text-gray-400 space-y-2">
-          <p>&copy; {new Date().getFullYear()} {themeConfig.brandName}. All rights Reserved.</p>
-          <p>
+        
+        <div className="text-sm text-gray-400 space-y-3">
+          <p className="font-medium">&copy; {new Date().getFullYear()} {themeConfig.brandName}. All rights Reserved.</p>
+          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
             <a href="https://connectbayezid-8dcdz46v.manus.space" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Connect with Bayezid</a>
-            {" | "}
+            <span className="hidden md:inline text-gray-600">|</span>
             <a href="http://www.connectwithbayezid.it.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">cwb agency</a>
-            {" | "}
-            Developed By <a href="http://www.sayadbayezid.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Sayad Md bayezid hosan</a>
-          </p>
+            <span className="hidden md:inline text-gray-600">|</span>
+            <span className="text-gray-500">Developed By</span>
+            <a href="http://www.sayadbayezid.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors font-semibold">Sayad Md bayezid hosan</a>
+          </div>
         </div>
       </div>
     </footer>
