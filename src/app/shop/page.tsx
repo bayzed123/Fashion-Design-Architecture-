@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import ProductFilter from "@/components/ProductFilter";
 import ProductSearch from "@/components/ProductSearch";
 
-// Mock product data
+// Expanded Mock product data for a full demo
 const mockProducts = [
   {
     id: "1",
@@ -14,6 +14,7 @@ const mockProducts = [
     image: "/product-1.jpg",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "White"],
+    category: "Essentials"
   },
   {
     id: "2",
@@ -22,6 +23,7 @@ const mockProducts = [
     image: "/product-2.jpg",
     sizes: ["XS", "S", "M", "L"],
     colors: ["White", "Blue"],
+    category: "Formal"
   },
   {
     id: "3",
@@ -30,6 +32,7 @@ const mockProducts = [
     image: "/product-3.jpg",
     sizes: ["28", "30", "32", "34"],
     colors: ["Blue", "Black"],
+    category: "Bottoms"
   },
   {
     id: "4",
@@ -38,107 +41,153 @@ const mockProducts = [
     image: "/product-4.jpg",
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Red", "Blue", "Green"],
+    category: "Casual"
   },
   {
     id: "5",
-    name: "Summer Dress",
-    price: 3000,
+    name: "Summer Floral Dress",
+    price: 3200,
     image: "/product-5.jpg",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Yellow", "Red"],
+    category: "Dresses"
   },
   {
     id: "6",
-    name: "Formal Blazer",
-    price: 5000,
+    name: "Formal Navy Blazer",
+    price: 5500,
     image: "/product-6.jpg",
     sizes: ["S", "M", "L", "XL"],
-    colors: ["Black", "Gray"],
+    colors: ["Blue", "Black"],
+    category: "Formal"
   },
+  {
+    id: "7",
+    name: "Oversized Beige Hoodie",
+    price: 2800,
+    image: "/product-1.jpg",
+    sizes: ["M", "L", "XL"],
+    colors: ["Beige", "Gray"],
+    category: "Essentials"
+  },
+  {
+    id: "8",
+    name: "Slim Fit Chinos",
+    price: 2200,
+    image: "/product-2.jpg",
+    sizes: ["30", "32", "34"],
+    colors: ["Khaki", "Black", "Navy"],
+    category: "Bottoms"
+  },
+  {
+    id: "9",
+    name: "Silk Evening Gown",
+    price: 8500,
+    image: "/product-3.jpg",
+    sizes: ["S", "M", "L"],
+    colors: ["Emerald", "Black"],
+    category: "Dresses"
+  }
 ];
 
 const ShopPage = () => {
   const [filteredProducts, setFilteredProducts] = useState(mockProducts);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilters, setActiveFilters] = useState<any>({});
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    filterProducts(query, {});
   };
 
-  interface FilterOptions {
-  sizes?: string[];
-  colors?: string[];
-  priceRange?: [number, number];
-}
-
-const handleFilterChange = (filters: FilterOptions) => {
-    filterProducts(searchQuery, filters);
+  const handleFilterChange = (filters: any) => {
+    setActiveFilters(filters);
   };
 
-  const filterProducts = (query: string, filters: FilterOptions) => {
+  useEffect(() => {
     let filtered = mockProducts;
 
     // Search filter
-    if (query) {
+    if (searchQuery) {
       filtered = filtered.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     // Size filter
-    if (filters.sizes && filters.sizes.length > 0) {
-      const sizes = filters.sizes;
+    if (activeFilters.sizes && activeFilters.sizes.length > 0) {
       filtered = filtered.filter((product) =>
-        sizes.some((size: string) => product.sizes.includes(size))
+        activeFilters.sizes.some((size: string) => product.sizes.includes(size))
       );
     }
 
     // Color filter
-    if (filters.colors && filters.colors.length > 0) {
-      const colors = filters.colors;
+    if (activeFilters.colors && activeFilters.colors.length > 0) {
       filtered = filtered.filter((product) =>
-        colors.some((color: string) => product.colors.includes(color))
+        activeFilters.colors.some((color: string) => product.colors.includes(color))
       );
     }
 
     // Price filter
-    if (filters.priceRange) {
-      const [min, max] = filters.priceRange;
+    if (activeFilters.priceRange) {
+      const [min, max] = activeFilters.priceRange;
       filtered = filtered.filter(
-        (product) =>
-          product.price >= min &&
-          product.price <= max
+        (product) => product.price >= min && product.price <= max
       );
     }
 
     setFilteredProducts(filtered);
-  };
+  }, [searchQuery, activeFilters]);
 
   return (
-    <div className="py-8">
-      <h1 className="text-4xl font-bold mb-8">Shop Our Collection</h1>
-      
-      <ProductSearch onSearch={handleSearch} />
+    <div className="py-8 max-w-7xl mx-auto px-4">
+      <div className="mb-10 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Shop Our Collection</h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Explore our curated selection of premium fashion pieces designed for style and comfort.
+        </p>
+      </div>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        <ProductFilter onFilterChange={handleFilterChange} />
+      <div className="mb-8">
+        <ProductSearch onSearch={handleSearch} />
+      </div>
 
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row gap-10">
+        <aside className="w-full md:w-1/4">
+          <ProductFilter onFilterChange={handleFilterChange} />
+        </aside>
+        
+        <main className="flex-1">
+          <div className="flex justify-between items-center mb-6">
+            <p className="text-gray-600">Showing {filteredProducts.length} products</p>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Sort by:</span>
+              <select className="border-none bg-transparent font-medium focus:ring-0 cursor-pointer">
+                <option>Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest</option>
+              </select>
+            </div>
+          </div>
+
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-xl text-gray-600">
-                No products found. Try adjusting your filters.
-              </p>
+            <div className="text-center py-20 bg-gray-50 rounded-xl">
+              <p className="text-xl text-gray-500 mb-4">No products found matching your criteria.</p>
+              <button 
+                onClick={() => {setSearchQuery(""); setActiveFilters({});}}
+                className="text-black underline font-medium"
+              >
+                Clear all filters
+              </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} {...product} />
               ))}
             </div>
           )}
-        </div>
+        </main>
       </div>
     </div>
   );
