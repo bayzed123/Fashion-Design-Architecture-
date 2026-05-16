@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { useCartStore } from "../store/useCartStore";
@@ -79,12 +80,12 @@ const Cart = () => {
             <p className="text-2xl font-bold mb-4">
               Total: ৳{totalPrice}
             </p>
-            <button
+            <Link href="/checkout"
               className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition"
               style={{ backgroundColor: themeConfig.colors.primary }}
             >
               Proceed to Checkout
-            </button>
+            </Link>
           </div>
         </>
       )}

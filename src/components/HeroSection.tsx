@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { themeConfig } from "@/../themeConfig";
 
 const HeroSection = () => {
@@ -27,14 +28,14 @@ const HeroSection = () => {
         <p className="text-lg md:text-xl mb-12 leading-relaxed opacity-80 max-w-2xl mx-auto italic" style={{ fontFamily: themeConfig.fonts.heading }}>
           Experience the pinnacle of haute couture. Each piece tells a story of elegance, craftsmanship, and timeless beauty.
         </p>
-        <button className="px-12 py-5 text-sm font-bold transition-all duration-500 uppercase tracking-[0.3em] rounded-full hover:bg-white hover:text-black" 
+        <Link href="/shop" className="px-12 py-5 text-sm font-bold transition-all duration-500 uppercase tracking-[0.3em] rounded-full hover:bg-white hover:text-black" 
           style={{ 
             backgroundColor: themeConfig.colors.gold,
             color: themeConfig.colors.primary,
           }}
         >
           Explore Collection
-        </button>
+        </Link>
       </div>
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-50">
         <div className="w-[1px] h-16 bg-white mx-auto"></div>
