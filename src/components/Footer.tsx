@@ -27,7 +27,16 @@ const Footer = () => {
             </a>
           )}
         </div>
-        <p>&copy; {new Date().getFullYear()} {themeConfig.brandName}. All rights reserved.</p>
+        <div className="text-sm text-gray-400 space-y-2">
+          <p>&copy; {new Date().getFullYear()} {themeConfig.brandName}. All rights Reserved.</p>
+          <p>
+            <a href="https://connectbayezid-8dcdz46v.manus.space" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Connect with Bayezid</a>
+            {" | "}
+            <a href="http://www.connectwithbayezid.it.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">cwb agency</a>
+            {" | "}
+            Developed By <a href="http://www.sayadbayezid.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Sayad Md bayezid hosan</a>
+          </p>
+        </div>
       </div>
     </footer>
   );
