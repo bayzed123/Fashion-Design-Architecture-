@@ -120,7 +120,7 @@ const Header = () => {
               <X className="h-8 w-8" />
             </button>
           </div>
-          <nav className="flex flex-col gap-8 items-center justify-center flex-grow">
+          <nav className="flex flex-col gap-8 items-center justify-center flex-grow text-white">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 

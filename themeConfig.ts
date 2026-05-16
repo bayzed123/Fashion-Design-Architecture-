@@ -1,4 +1,7 @@
 export const themeConfig = {
+  contact: {
+    whatsappNumber: "8801700000000", // Placeholder WhatsApp number
+  },
   brandName: "VELLUTO HAUTE COUTURE",
   tagline: "Luxury Fashion Collection",
   logo: "/logo.svg",

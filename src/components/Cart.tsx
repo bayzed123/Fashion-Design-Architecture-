@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { generateInvoice } from "@/lib/generateInvoice";
 import Link from "next/link";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
@@ -11,6 +12,29 @@ const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCartStore();
 
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const handleCheckout = () => {
+    if (cart.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
+    // Generate PDF Invoice
+    generateInvoice(cart, totalPrice);
+
+    // Generate WhatsApp message
+    let whatsappMessage = `Hello, I'd like to place an order.\n\nOrder Details:\n`;
+    cart.forEach(item => {
+      whatsappMessage += `- ${item.name} (Size: ${item.size}, Color: ${item.color}) x ${item.quantity} = ৳${(item.price * item.quantity).toFixed(2)}\n`;
+    });
+    whatsappMessage += `\nGrand Total: ৳${totalPrice.toFixed(2)}\n\n`;
+    whatsappMessage += `Please confirm my order.`;
+
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappLink = `https://wa.me/${themeConfig.contact.whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappLink, '_blank');
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -80,12 +104,13 @@ const Cart = () => {
             <p className="text-2xl font-bold mb-4">
               Total: ৳{totalPrice}
             </p>
-            <Link href="/checkout"
+            <button
+              onClick={handleCheckout}
               className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition"
               style={{ backgroundColor: themeConfig.colors.primary }}
             >
               Proceed to Checkout
-            </Link>
+            </button>
           </div>
         </>
       )}
