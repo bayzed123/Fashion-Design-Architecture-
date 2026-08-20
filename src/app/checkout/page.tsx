@@ -5,7 +5,7 @@ import { useCartStore } from "@/store/useCartStore";
 import { MessageCircle } from "lucide-react";
 
 const CheckoutPage = () => {
-  const { cart } = useCartStore();
+  const { cart, clearCart } = useCartStore();
   const [paymentMethod, setPaymentMethod] = useState<string>("whatsapp");
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
