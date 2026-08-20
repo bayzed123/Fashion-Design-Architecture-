@@ -36,7 +36,7 @@ const CheckoutPage = () => {
       return;
     }
 
-    const whatsappNumber = "8801700000000"; // Replace with actual WhatsApp number
+    const whatsappNumber = "8801712345678"; // Replace with actual WhatsApp number
     const message = generateWhatsAppMessage();
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(whatsappUrl, "_blank");
