@@ -1,3 +1,4 @@
+[Live preview](https://fashion-design-architecture.pages.dev/)
 # White-label Master Fashion Website Template
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sayad_Md_Bayezid_Hosan_Portrait.jpg" alt="Sayad Md Bayezid Hosan" width="100%">
 
