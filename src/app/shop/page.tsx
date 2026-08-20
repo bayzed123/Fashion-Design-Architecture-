@@ -12,7 +12,7 @@ const mockProducts = [
     id: "1",
     name: "Evening Gown Elegance",
     price: 45000,
-    image: "/product-1.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-1.jpg`,
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Burgundy", "Black", "Navy"],
     category: "Dresses"
@@ -21,7 +21,7 @@ const mockProducts = [
     id: "2",
     name: "Urban Chic Collection",
     price: 28000,
-    image: "/product-2.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-2.jpg`,
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Black", "Charcoal", "White"],
     category: "Casual"
@@ -30,7 +30,7 @@ const mockProducts = [
     id: "3",
     name: "Luxury Accessories",
     price: 35000,
-    image: "/product-3.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-3.jpg`,
     sizes: ["One Size"],
     colors: ["Gold", "Silver", "Bronze"],
     category: "Accessories"
@@ -39,7 +39,7 @@ const mockProducts = [
     id: "4",
     name: "Tailored Suit",
     price: 52000,
-    image: "/product-4.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-4.jpg`,
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Navy", "Black", "Charcoal"],
     category: "Formal"
@@ -48,7 +48,7 @@ const mockProducts = [
     id: "5",
     name: "Avant-Garde Statement",
     price: 48000,
-    image: "/product-5.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-5.jpg`,
     sizes: ["XS", "S", "M", "L"],
     colors: ["Cream", "White", "Ivory"],
     category: "Dresses"
@@ -57,7 +57,7 @@ const mockProducts = [
     id: "6",
     name: "Bohemian Luxury",
     price: 42000,
-    image: "/product-6.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-6.jpg`,
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Gold", "Terracotta", "Rust"],
     category: "Dresses"
@@ -66,7 +66,7 @@ const mockProducts = [
     id: "7",
     name: "Premium Silk Blouse",
     price: 32000,
-    image: "/product-1.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-1.jpg`,
     sizes: ["XS", "S", "M", "L"],
     colors: ["Ivory", "Blush", "Black"],
     category: "Formal"
@@ -75,7 +75,7 @@ const mockProducts = [
     id: "8",
     name: "Designer Trousers",
     price: 38000,
-    image: "/product-2.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-2.jpg`,
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Black", "Navy", "Camel"],
     category: "Bottoms"
@@ -84,7 +84,7 @@ const mockProducts = [
     id: "9",
     name: "Couture Jacket",
     price: 55000,
-    image: "/product-3.jpg",
+    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-3.jpg`,
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "Charcoal", "Cream"],
     category: "Formal"

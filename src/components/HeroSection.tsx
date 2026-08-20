@@ -7,8 +7,7 @@ import { themeConfig } from "@/../themeConfig";
 const HeroSection = () => {
   return (
     <section className="relative h-[85vh] w-full flex items-center justify-center text-white overflow-hidden">
-      <Image
-        src="/hero-fashion.jpg"
+      <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/hero-fashion.jpg`}
         alt="Hero Background"
         fill
         className="z-0 object-cover"

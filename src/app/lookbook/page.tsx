@@ -4,12 +4,12 @@ import { themeConfig } from "@/../themeConfig";
 const mockLookbookImages = [
   {
     id: "1",
-    url: "/lookbook-1.jpg",
+    url: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/lookbook-1.jpg`,
     title: "Haute Couture Collection",
   },
   {
     id: "2",
-    url: "/lookbook-2.jpg",
+    url: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/lookbook-2.jpg`,
     title: "Intricate Embroidery",
   },
   {
