@@ -30,17 +30,86 @@ const CheckoutPage = () => {
     return encodeURIComponent(message);
   };
 
-  const handleWhatsAppCheckout = () => {
+  
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [orderComplete, setOrderComplete] = useState<any>(null);
+
+  const generateWhatsAppMessage = () => {
+    const productList = cart
+      .map((item) => `${item.name} (Size: ${item.size}, Color: ${item.color}) x${item.quantity}`)
+      .join("\n");
+    const message = `Hello! I would like to place an order:\n\n${productList}\n\nTotal: ৳${totalPrice}\n\nCustomer Name: ${customerInfo.name}\nPhone: ${customerInfo.phone}\nAddress: ${customerInfo.address}`;
+    return encodeURIComponent(message);
+  };
+
+  const handleApiCheckout = async () => {
     if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
       alert("Please fill in all required fields");
       return;
     }
 
-    const whatsappNumber = "8801712345678"; // Replace with actual WhatsApp number
-    const message = generateWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
+    setIsSubmitting(true);
+    try {
+      // Try Cloudflare Pages API first
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer_name: customerInfo.name,
+          customer_phone: customerInfo.phone,
+          customer_address: customerInfo.address,
+          total_price: totalPrice,
+          payment_method: paymentMethod,
+          items: cart
+        })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setOrderComplete(data.orderId);
+          clearCart();
+          return;
+        }
+      }
+      
+      // Fallback to WhatsApp if API fails (e.g., on GitHub Pages)
+      console.log("API failed, falling back to WhatsApp");
+      const whatsappNumber = "8801712345678";
+      const message = generateWhatsAppMessage();
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+      
+    } catch (error) {
+      // Fallback to WhatsApp on network error
+      console.log("Network error, falling back to WhatsApp");
+      const whatsappNumber = "8801712345678";
+      const message = generateWhatsAppMessage();
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+
+  if (orderComplete) {
+    return (
+      <div className="py-16 text-center">
+        <h1 className="text-4xl font-bold mb-4 text-green-600">Order Placed Successfully!</h1>
+        <p className="text-xl mb-8">Your order ID is: <span className="font-bold">{orderComplete}</span></p>
+        <p className="mb-8">Thank you for shopping with Velluto Haute Couture.</p>
+        <div className="flex justify-center gap-4">
+          <a href={`/order-tracking?id=${orderComplete}`} className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition">
+            Track Order & Download Invoice
+          </a>
+          <a href="/shop" className="px-6 py-3 border border-black rounded hover:bg-gray-100 transition">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className="py-8">
@@ -197,11 +266,11 @@ const CheckoutPage = () => {
 
             {paymentMethod === "whatsapp" && (
               <button
-                onClick={handleWhatsAppCheckout}
+                onClick={handleApiCheckout} disabled={isSubmitting}
                 className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition flex items-center justify-center gap-2"
               >
-                <MessageCircle className="h-5 w-5" />
-                Checkout via WhatsApp
+                
+                {isSubmitting ? "Processing..." : "Place Order"}
               </button>
             )}
 
