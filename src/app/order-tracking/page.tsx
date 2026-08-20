@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Download, Package, Truck, CheckCircle } from "lucide-react";
+import { Suspense } from "react";
 
-export default function OrderTrackingPage() {
+function OrderTrackingContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("id");
   
@@ -256,5 +257,13 @@ export default function OrderTrackingPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function OrderTrackingPage() {
+  return (
+    <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+      <OrderTrackingContent />
+    </Suspense>
   );
 }
