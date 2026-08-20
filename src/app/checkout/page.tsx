@@ -35,13 +35,7 @@ const CheckoutPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState<any>(null);
 
-  const generateWhatsAppMessage = () => {
-    const productList = cart
-      .map((item) => `${item.name} (Size: ${item.size}, Color: ${item.color}) x${item.quantity}`)
-      .join("\n");
-    const message = `Hello! I would like to place an order:\n\n${productList}\n\nTotal: ৳${totalPrice}\n\nCustomer Name: ${customerInfo.name}\nPhone: ${customerInfo.phone}\nAddress: ${customerInfo.address}`;
-    return encodeURIComponent(message);
-  };
+  
 
   const handleApiCheckout = async () => {
     if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
