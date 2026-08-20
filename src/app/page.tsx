@@ -5,6 +5,8 @@ import ProductCard from "../components/ProductCard";
 import Link from "next/link";
 import { ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones } from "lucide-react";
 import { themeConfig } from "@/../themeConfig";
+import { getAssetPath } from "@/lib/utils";
+
 
 const featuredProducts = [
   {
@@ -169,7 +171,7 @@ export default function Home() {
               Explore Now
             </Link>
           </div>
-          <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_PATH || ""}/lookbook-1.jpg)`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
+          <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: `url(${getAssetPath("/lookbook-1.jpg")})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-0"></div>
         </div>
       </section>

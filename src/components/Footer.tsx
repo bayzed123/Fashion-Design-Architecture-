@@ -1,5 +1,7 @@
 import { themeConfig } from "@/../themeConfig";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/utils";
+
 
 const Footer = () => {
   const socialIcons = [

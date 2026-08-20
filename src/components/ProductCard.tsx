@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { themeConfig } from "@/../themeConfig";
+import { getAssetPath } from "@/lib/utils";
+
 
 interface ProductCardProps {
   id: string;

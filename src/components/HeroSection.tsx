@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { themeConfig } from "@/../themeConfig";
+import { getAssetPath } from "@/lib/utils";
+
 
 const HeroSection = () => {
   return (
     <section className="relative h-[85vh] w-full flex items-center justify-center text-white overflow-hidden">
-      <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/hero-fashion.jpg`}
+      <Image src={getAssetPath("/hero-fashion.jpg")}
         alt="Hero Background"
         fill
         className="z-0 object-cover"

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useCartStore } from "@/store/useCartStore";
 import { themeConfig } from "@/../themeConfig";
 import { Heart, Share2, Star, ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { getAssetPath } from "@/lib/utils";
+
 
 // Mock product data matching the shop page
 const mockProducts: any = {
@@ -12,7 +14,7 @@ const mockProducts: any = {
     id: "1",
     name: "Classic Black T-Shirt",
     price: 1500,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-1.jpg`,
+    image: "/product-1.jpg",
     description: "A premium quality classic black t-shirt made from 100% organic cotton. Perfect for everyday wear with a comfortable fit and durable fabric.",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black", "White"],
@@ -23,7 +25,7 @@ const mockProducts: any = {
     id: "2",
     name: "Elegant White Shirt",
     price: 2500,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-2.jpg`,
+    image: "/product-2.jpg",
     description: "Crisp white formal shirt designed for a sharp look. Features a modern slim fit and high-quality stitching for maximum comfort and style.",
     sizes: ["XS", "S", "M", "L"],
     colors: ["White", "Blue"],
@@ -34,7 +36,7 @@ const mockProducts: any = {
     id: "3",
     name: "Premium Denim Jeans",
     price: 3500,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-3.jpg`,
+    image: "/product-3.jpg",
     description: "High-grade denim jeans with a classic straight-cut design. These jeans offer both durability and a timeless style that pairs well with anything.",
     sizes: ["28", "30", "32", "34"],
     colors: ["Blue", "Black"],
@@ -45,7 +47,7 @@ const mockProducts: any = {
     id: "4",
     name: "Casual Polo Shirt",
     price: 2000,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-4.jpg`,
+    image: "/product-4.jpg",
     description: "A versatile polo shirt that bridges the gap between casual and formal. Made from breathable pique cotton for all-day comfort.",
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Red", "Blue", "Green"],
@@ -56,7 +58,7 @@ const mockProducts: any = {
     id: "5",
     name: "Summer Floral Dress",
     price: 3200,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-5.jpg`,
+    image: "/product-5.jpg",
     description: "Lightweight and breezy floral dress perfect for summer outings. Features a flattering silhouette and vibrant colors.",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Yellow", "Red"],
@@ -67,7 +69,7 @@ const mockProducts: any = {
     id: "6",
     name: "Formal Navy Blazer",
     price: 5500,
-    image: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/product-6.jpg`,
+    image: "/product-6.jpg",
     description: "Tailored navy blazer that adds a touch of sophistication to any outfit. Ideal for business meetings or formal events.",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Blue", "Black"],

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { themeConfig } from "@/../themeConfig";
+import { getAssetPath } from "@/lib/utils";
+
 
 interface LookbookImage {
   id: string;
@@ -28,7 +30,7 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
             onClick={() => setSelectedImage(image)}
           >
             <Image
-              src={image.url}
+              src={getAssetPath(image.url)}
               alt={image.title}
               width={400}
               height={500}
@@ -66,7 +68,7 @@ const Lookbook: React.FC<LookbookProps> = ({ images }) => {
               <X className="h-10 w-10" />
             </button>
             <Image
-              src={selectedImage.url}
+              src={getAssetPath(selectedImage.url)}
               alt={selectedImage.title}
               width={800}
               height={1000}
