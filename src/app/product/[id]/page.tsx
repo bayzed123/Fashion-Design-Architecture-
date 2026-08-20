@@ -1,3 +1,4 @@
+"use client";
 export function generateStaticParams() {
   return [
     { id: '1' },
@@ -8,7 +9,6 @@ export function generateStaticParams() {
     { id: '6' },
   ]
 }
-"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
